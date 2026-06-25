@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.db
+
+# Node / frontend
+node_modules/
+dist/
+.env
+.env.local
+
+# Uploads (don't commit user files)
+backend/uploads/*
+!backend/uploads/.gitkeep
