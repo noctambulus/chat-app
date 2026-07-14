@@ -12,6 +12,7 @@ from database import init_db
 from routers.users import router as auth_router
 from routers.channels import router as channels_router
 from routers.messages import router as messages_router
+from routers.ws import router as ws_router
 import os
 
 init_db()
@@ -29,6 +30,7 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(channels_router)
 app.include_router(messages_router)
+app.include_router(ws_router)
 
 
 @app.get("/")
