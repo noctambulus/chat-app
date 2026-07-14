@@ -13,3 +13,6 @@ dist/
 # Uploads (don't commit user files)
 backend/uploads/*
 !backend/uploads/.gitkeep
+
+# Claude Code
+.claude/
