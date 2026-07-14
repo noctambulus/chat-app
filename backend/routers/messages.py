@@ -10,6 +10,7 @@ router = APIRouter(prefix="/messages", tags=["messages"])
 class SendMessageRequest(BaseModel):
     content: str
     room_id: int
+    file_url: str | None = None
 
 
 def _require_membership(db: Session, user_id: int, room_id: int):
@@ -34,6 +35,7 @@ def send_message(
         content=payload.content,
         sender_id=current_user.id,
         room_id=payload.room_id,
+        file_url=payload.file_url,
     )
     db.add(message)
     db.commit()
@@ -45,6 +47,7 @@ def send_message(
         "sender_id": message.sender_id,
         "room_id": message.room_id,
         "created_at": message.created_at,
+        "file_url": message.file_url,
     }
 
 
@@ -69,6 +72,7 @@ def get_messages(
             "sender_id": m.sender_id,
             "room_id": m.room_id,
             "created_at": m.created_at,
+            "file_url": m.file_url,
         }
         for m in messages
     ]
